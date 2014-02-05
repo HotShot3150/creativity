@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: creativity_development
+  pool: 5  
+  host: localhost
+  port: 5432
+  username: riverbryant
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: creativity_test
+  pool: 5
+  host: localhost
+  port: 5432  
+  username: riverbryant
+  password:
