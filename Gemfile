@@ -7,6 +7,13 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 
+group :assets do
+ 
+  gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+  gem 'bootstrap-sass', '~> 3.1.0'
+  gem 'execjs'
+  gem 'uglifier', '>= 1.0.3'
+end
 
 
 gem 'jquery-rails'
