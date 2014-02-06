@@ -50,3 +50,8 @@ gem "zeus", :group => [:test, :development]
 gem "devise"
 gem "friendly_id"
 gem "simple_form"
+gem "cancan"
+
+
+
+
