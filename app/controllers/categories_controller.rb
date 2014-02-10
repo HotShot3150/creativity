@@ -1,4 +1,9 @@
 class CategoriesController < ApplicationController
+  
+  authorize_resource
+
+  before_filter { @selected_nav = "categories" }
+
   # GET /categories
   # GET /categories.json
   def index

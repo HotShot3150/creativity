@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-	 load_and_authorize_resource
+	
+	skip_authorization_check
  
   def index
 
