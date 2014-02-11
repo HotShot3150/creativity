@@ -50,7 +50,7 @@ gem "guard-annotate", :group => [:test, :development]
 gem "guard-rails", :group => [:test, :development]
 gem "zeus", :group => [:test, :development]
 gem "devise"
-gem "friendly_id"
+gem "friendly_id", "~> 4.0.10"
 gem "simple_form"
 gem "cancan"
 

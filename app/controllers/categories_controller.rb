@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   
   authorize_resource
+  
 
   before_filter { @selected_nav = "categories" }
 
@@ -46,6 +47,8 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(params[:category])
+
+    @category.user = current_user
 
     respond_to do |format|
       if @category.save

@@ -11,12 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140206194555) do
+ActiveRecord::Schema.define(:version => 20140210234045) do
 
   create_table "categories", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "slug"
+  end
+
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "slug"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -39,10 +52,14 @@ ActiveRecord::Schema.define(:version => 20140206194555) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "slug"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end

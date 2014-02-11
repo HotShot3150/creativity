@@ -223,7 +223,7 @@ DEPENDENCIES
   devise
   execjs
   factory_girl_rails
-  friendly_id
+  friendly_id (~> 4.0.10)
   guard-annotate
   guard-livereload
   guard-rails

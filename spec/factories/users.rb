@@ -2,6 +2,8 @@
 FactoryGirl.define do
   factory :superuser, :class => :user do
     sequence(:email) { |n| "superuser#{n}@test.com" }
+    first_name 'Super'
+    last_name 'User'    
     password 'abcdef'
     role 'superuser' 
     confirmed_at '2011-04-25 19:11:53'
@@ -12,6 +14,8 @@ end
 FactoryGirl.define do
   factory :tech_manager, :class => :user do
     sequence(:email) { |n| "tech_manager#{n}@test.com" }  
+    first_name 'Tech'
+    last_name 'Manager'    
     password 'abcdef'
     role 'tech_manager'
     confirmed_at '2011-04-25 19:11:53'
@@ -23,6 +27,8 @@ end
 FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@test.com" }
+    first_name 'Test'
+    last_name 'User'
     password 'abcdef'
     role 'user'
     confirmed_at '2011-04-25 19:11:53'

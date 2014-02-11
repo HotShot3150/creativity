@@ -17,9 +17,9 @@ class Ability
 
     ######################################################################
     # GUEST - role is NULL ---> Guest, not logged in 
-    if @user.role.nil?
-      # can :read, Post  
-      can :read, Category      
+    if @user.role.nil? 
+      can :read, Category
+      can :read, Post   
     else
      send(@user.role.to_sym)  
     end
@@ -32,7 +32,9 @@ class Ability
   # USER  ---> Someone has registered and is logged in
   def user
     #can :read, Post
-    can :read, Category    
+    can :read, Category
+    can :read, Post 
+    can :manage, Post, user_id: @user.id  
   end  
 
   ######################################################################  
@@ -40,6 +42,7 @@ class Ability
   def tech_manager 
     user
     can :manage, Category
+    can :manage, Post
     
   end
   

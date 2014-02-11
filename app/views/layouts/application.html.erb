@@ -14,7 +14,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Creativity Forum" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Creativity " %></title>
 
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -30,15 +30,19 @@
     </li>
   </ul>
   <section class="top-bar-section">
-    <ul class="right">
-      <li class="divider"></li>
+    <ul>
       <li><%= link_to "Categories", categories_path %></li>
-      <li class="divider"></li>
-      <li><%= link_to "Price List" %></li>
-      <li class="divider"></li>
-      <li><%= link_to "Contact Us" %></li>
-      <li class="divider"></li>
-      <li><%= link_to "Cart" %></li>
+    </ul>
+    <ul class="right">  
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      <% else %>    
+        <li><%= link_to "Sign up" %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Sign i n" %></li>
+      <% end %>
     </ul>
   </section>
 </nav>

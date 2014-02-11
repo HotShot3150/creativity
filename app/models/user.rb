@@ -20,7 +20,11 @@
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
 #  unconfirmed_email      :string(255)
+#  slug                   :string(255)
+#  first_name             :string(255)
+#  last_name              :string(255)
 #
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -28,10 +32,26 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me
+
+  has_many :posts, dependent: :destroy
+  has_many :categories
+
+
+  validates :first_name, :last_name, presence: true
 
 
 	ROLES = %w[superuser tech_manager user]
+
+	extend FriendlyId
+  friendly_id :full_name, use: :slugged
+
+  def full_name
+    if first_name.present? && last_name.present?
+  	 first_name + " " + last_name
+    else
+      "Guest"
+    end
+  end
 
 end
