@@ -1,8 +1,8 @@
 Creativity::Application.routes.draw do
-  resources :posts
 
-
-  resources :categories
+  resources :categories do 
+    resources :posts
+  end
 
 
   devise_for :users
