@@ -19,7 +19,8 @@ class Ability
     # GUEST - role is NULL ---> Guest, not logged in 
     if @user.role.nil? 
       can :read, Category
-      can :read, Post   
+      can :read, Post
+      can :read, Project   
     else
      send(@user.role.to_sym)  
     end
@@ -34,7 +35,9 @@ class Ability
     #can :read, Post
     can :read, Category
     can :read, Post 
-    can :manage, Post, user_id: @user.id  
+    can :manage, Post, user_id: @user.id
+    can :read, Project
+    can :manage, Project, user_id: @user.id     
   end  
 
   ######################################################################  
@@ -43,6 +46,7 @@ class Ability
     user
     can :manage, Category
     can :manage, Post
+    can :manage, Project   
     
   end
   

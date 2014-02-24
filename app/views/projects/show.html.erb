@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @project.title %>
+</p>
+
+<div id="project_image">
+  <% @project.image.each do |photo| %>
+    <div class="photo">
+      <%= image_tag photo.image_url.to_s %>
+      <div class="name"><%= image.name %></div>
+      <div class="actions">
+        <%= link_to "edit", edit_image_path(image) %> |
+        <%= link_to "remove", image, :confirm => 'Are you sure?', :method => :delete %>
+      </div>
+    </div>
+  <% end %>
+  <div class="clear"></div>
+</div>
+
+<p>
+  <b>Body:</b>
+  <%= @project.body %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @project.user_id %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @project.category_id %>
+</p>
+
+<p>
+  <b>Slug:</b>
+  <%= @project.slug %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

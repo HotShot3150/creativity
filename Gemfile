@@ -53,7 +53,4 @@ gem "devise"
 gem "friendly_id", "~> 4.0.10"
 gem "simple_form"
 gem "cancan"
-
-
-
-
+gem "carrierwave"
