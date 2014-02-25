@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  role                   :string(255)      default("user")
+#  role                   :string(255)      default("default_user")
 #  confirmation_token     :string(255)
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
 
 
-	ROLES = %w[superuser tech_manager user]
+	ROLES = %w[superuser tech_manager default_user]
 
 	extend FriendlyId
   friendly_id :full_name, use: :slugged

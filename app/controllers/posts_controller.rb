@@ -2,10 +2,8 @@ class PostsController < ApplicationController
 
   authorize_resource
 
-  before_filter :get_category
-
   def index
-    @posts = @category.posts.order("posts.created_at").includes(:category, :user)
+    @posts = Post.order("posts.created_at").includes(:category, :user)
 
     @posts = @posts.where("posts.category_id = ?", params[:category_id]) if params[:category_id].present?
 
@@ -18,7 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = @category.posts.find(params[:id])
+    @post = Post.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,7 +27,8 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = @category.posts.build
+    @post = Post.new
+    raise @post.inspect
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,18 +38,18 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = @category.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = @category.posts.build(params[:post])
+    @post = Post.new(params[:post])
     @post.user = current_user
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to category_path(@category), notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -66,7 +65,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to category_path(@category), notice: 'Post was successfully updated.' }
+        format.html { redirect_to posts_path, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,14 +81,8 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to category_path(@category), notice: 'Post was deleted.' }
+      format.html { redirect_to posts_path, notice: 'Post was deleted.' }
       format.json { head :no_content }
     end
   end
-
-  private
-
-    def get_category
-      @category = Category.find(params[:category_id])
-    end
 end

@@ -3,8 +3,8 @@
 <p><%= @category.description %></p>
 
 <% @category.posts.each do |post| %>
-	<p><%= link_to post.title, category_post_path(@category, post) %></p>
+	<p><%= link_to post.title, post_path %></p>
 
 <% end %>
 
- <%= link_to 'New Post', new_category_post_path(@category), class: "button radius" %>
+ <%= link_to 'New Post', new_post_path, class: "button radius" %>

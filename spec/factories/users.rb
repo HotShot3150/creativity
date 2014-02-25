@@ -30,7 +30,7 @@ FactoryGirl.define do
     first_name 'Test'
     last_name 'User'
     password 'abcdef'
-    role 'user'
+    role 'default_user'
     confirmed_at '2011-04-25 19:11:53'
     confirmation_sent_at '2011-04-24 19:11:53'  
   end

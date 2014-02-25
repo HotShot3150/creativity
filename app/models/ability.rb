@@ -17,7 +17,7 @@ class Ability
 
     ######################################################################
     # GUEST - role is NULL ---> Guest, not logged in 
-    if @user.role.nil? 
+    if @user.id.nil? 
       can :read, Category
       can :read, Post
       can :read, Project   
@@ -31,7 +31,7 @@ class Ability
 
   ######################################################################
   # USER  ---> Someone has registered and is logged in
-  def user
+  def default_user
     #can :read, Post
     can :read, Category
     can :read, Post 
@@ -43,7 +43,7 @@ class Ability
   ######################################################################  
   # tech_manager ---> Admin power permissions to edit content etc.   
   def tech_manager 
-    user
+    default_user
     can :manage, Category
     can :manage, Post
     can :manage, Project   
