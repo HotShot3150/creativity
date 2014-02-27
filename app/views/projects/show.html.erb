@@ -6,18 +6,10 @@
 </p>
 
 <div id="project_image">
-  <% @project.image.each do |photo| %>
+
     <div class="photo">
-      <%= image_tag project.image_url.to_s %>
-      <div class="name"><%= image.name %></div>
-      <div class="actions">
-        <%= link_to "edit", edit_image_path(image) %> |
-        <%= link_to "remove", image, :confirm => 'Are you sure?', :method => :delete %>
-      </div>
+      <%= image_tag @project.image_url.to_s %>
     </div>
-  <% end %>
-  <div class="clear"></div>
-</div>
 
 <p>
   <b>Body:</b>
@@ -25,7 +17,7 @@
 </p>
 
   <b>Category:</b>
-  <%= @project.category_id = current %>
+  <%= link_to @project.category.title, @project.category %>
 </p>
 
 

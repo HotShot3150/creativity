@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Image</th>
     <th>Title</th>
     <th>Body</th>
     <th>User</th>
@@ -13,10 +14,11 @@
 
 <% @projects.each do |project| %>
   <tr>
+    <td><%= image_tag project.image.url(:thumb)%></td>
     <td><%= project.title %></td>
     <td><%= project.body %></td>
     <td><%= project.user.full_name %></td>
-    <td><%= project.category.name %></td>
+    <td><%= project.category.title %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>

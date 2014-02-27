@@ -35,6 +35,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
+gem "awesome_print"
 gem "better_errors", :group => :development
 gem "binding_of_caller", :group => :development
 gem "rspec-rails", :group => [:test, :development]
@@ -54,3 +55,4 @@ gem "friendly_id", "~> 4.0.10"
 gem "simple_form"
 gem "cancan"
 gem "carrierwave"
+gem "mini_magick"

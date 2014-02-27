@@ -15,17 +15,14 @@ describe "User" do
       #For Categories
       it{ should be_able_to(:read, category) }
       it{ should_not be_able_to(:manage, category) }
-      it{ should_not be_able_to(:create, post) }
 
       #For Posts 
       it{ should be_able_to(:read, post) }
       it{ should_not be_able_to(:manage, post) }
-      it{ should_not be_able_to(:create, post) }
 
       #For Projects
       it{ should be_able_to(:read, project) }
-      it{ should_not be_able_to(:manage, project) } 
-      it{ should_not be_able_to(:create, project) }        
+      it{ should_not be_able_to(:manage, project) }     
     end
 
 

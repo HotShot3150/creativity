@@ -1,4 +1,14 @@
-<h1><%= @category.title %><%= link_to('Edit', edit_category_path(@category)) if can? :update, @category %></h1>
+<%= content_for(:sidebar) do %>
+  	<h2>Projects</h2>
+  	<% @category.projects.each do |project| %>
+  		<p><%= link_to project.title, project %> by <%= project.user.full_name %></p>
+  	<% end %>
+<% end %>
+
+<h1><%= @category.title %></h1>
+<%= link_to('Edit Category', edit_category_path(@category)) if can? :update, @category %>
+
+<p />
 
 <p><%= @category.description %></p>
 
@@ -8,3 +18,4 @@
 <% end %>
 
  <%= link_to 'New Post', new_post_path, class: "button radius" %>
+

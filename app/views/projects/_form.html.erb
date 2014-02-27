@@ -5,6 +5,9 @@
     <%= f.input :title %>
     <%= f.input :body %>
     <%= f.input :image, as: :file %>
+    <% if @project.image.present? %>
+      <p><%= image_tag @project.image.url(:thumb) %></p>
+    <% end %>
     <%= f.association :category %>
   </div>
 

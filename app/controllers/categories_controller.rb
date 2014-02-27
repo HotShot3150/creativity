@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
-
+    @projects = 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @categories }
