@@ -53,7 +53,8 @@ module Creativity
 			:view_specs    => false,
 			:request_specs => true,
 			:routing_specs => false,
-			:helper_specs => false
+			:helper_specs => false,
+			:controller_specs => false
 		g.stylesheets = false
 		g.javascripts = false		
 	end

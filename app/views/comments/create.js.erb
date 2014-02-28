@@ -1,0 +1,4 @@
+$("#comments").prepend("<%= escape_javascript(render(@comment)) %>");
+$("#new_comment")[0].reset();
+$("li[data-comment='<%= @comment.id %>']").hide().slideDown();
+$("div.comment_content").removeClass("error");

@@ -18,6 +18,7 @@ class Project < ActiveRecord::Base
 
   belongs_to :user, dependent: :destroy
   belongs_to :category
+  has_many :comments, as: :commentable, dependent: :destroy
   mount_uploader :image, ImageUploader
   
   validates :title, :body, :user_id, :category_id, presence: true

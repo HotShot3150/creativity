@@ -18,6 +18,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
    def show
     @project = Project.find(params[:id])
+    @comments = @project.comments.order("created_at desc")
+    @comment = @project.comments.build
 
     respond_to do |format|
       format.html # show.html.erb

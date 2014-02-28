@@ -20,6 +20,7 @@ class Ability
     if @user.id.nil? 
       can :read, Category
       can :read, Post
+      can :read, Comment
       can :read, Project   
     else
      send(@user.role.to_sym)  
@@ -36,6 +37,9 @@ class Ability
     can :read, Category
     can :read, Post 
     can :manage, Post, user_id: @user.id
+    can :read, Comment
+    can :manage, Comment, user_id: @user.id  
+
     can :read, Project
     can :manage, Project, user_id: @user.id     
   end  
@@ -46,6 +50,7 @@ class Ability
     default_user
     can :manage, Category
     can :manage, Post
+    can :manage, Comment
     can :manage, Project   
     
   end

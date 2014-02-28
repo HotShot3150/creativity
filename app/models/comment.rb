@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  content          :text
+#  commentable_id   :integer
+#  commentable_type :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+class Comment < ActiveRecord::Base
+  attr_accessible  :content, :commentable_id, :commentable_type
+
+  belongs_to :commentable, polymorphic: true
+  belongs_to :user
+
+  validates :content, presence: true
+end
